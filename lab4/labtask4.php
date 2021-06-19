@@ -21,6 +21,30 @@
 	$address="";
 	$err_address="";
 
+	$city="";
+	$err_city="";
+
+	$phone="";
+	$err_phone="";
+
+
+	$state="";
+	$err_state="";
+
+
+	$postcode="";
+	$err_postcode="";
+
+	$Day="";
+	$err_Day="";
+
+
+	$Month="";
+	$err_Month="";
+
+	$Year="";
+	$err_Year="";
+
 	$bio="";
     $err_bio="";
 	
@@ -72,6 +96,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		}
 	}
 
+
+	if($_SERVER["REQUEST_METHOD"] == "POST"){
+		
+		if(empty($_POST["phone"])){
+			$hasError=true;
+			$err_phone="contact number Required";
+		}
+		
+		else{
+			$phone = $_POST["phone"];
+		}
+	}
+
 		
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
 		if(!isset($_POST["gender"])){
@@ -99,7 +136,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			echo $_POST["username"]."<br>";
 			echo $_POST["password"]."<br>";
 			echo $_POST["gender"]."<br>";
-			echo $_POST["address"]."<br>";			
+			echo $_POST["address"]."<br>";
+			echo $_POST["phone"]."<br>";				
 			echo $_POST["bio"]."<br>";
 			
 		}
@@ -150,10 +188,89 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 <tr>
 					<td align="right">Address</td>
-					<td>:<input name="address" value="<?php echo $address;?>" type="text" placeholder="Enter Your Address"> <br>
+					<td>:<input name="address" value="<?php echo $address;?>" type="text" placeholder="street Address"> <br>
 					<span><?php echo $err_address;?></span></td>
 				</tr>
 
+
+<tr>
+					<td align="right"></td>
+					<td><input name="city" type="text" placeholder="city"></td>
+					<td><span></span></td>
+
+					<td align="right"></td>
+					<td>-<input name="state" type="text" placeholder="state"></td>
+					<td><span></span></td>
+
+				</tr>
+
+
+				<tr>
+					<td align="right"></td>
+					<td><input name="postcode" type="text" placeholder="postal/Zipcode"></td>
+					<td><span></span></td>
+
+				</tr>
+
+
+				<tr>
+					<td align="right">Phone</td>
+					<td>:<input name="Phone" value="<?php echo $phone;?>" type="text" placeholder="Enter Your contact number"> <br>
+					<span><?php echo $err_phone;?></span></td>
+				</tr>
+
+
+ <tr>
+				<td align = "center" colspan="2">Birth Date</td>
+				<td align="left" ><select>
+					<option>Day</option>
+					<option>Saturday</option>
+					<option>Sunday</option>
+					<option>Monday</option>
+					<option>Tuesday</option>
+					<option>wednesday</option>
+					<option>Friday</option>
+
+
+				</select>
+				<td align="left">
+					<select>
+						<option>Month</option>
+						<option>january</option>
+					<option>february</option>
+					<option>March</option>
+					<option>April</option>
+					<option>May</option>
+					<option>June</option>
+					<option>July</option>
+					<option>Augest</option>
+					<option>September</option>
+					<option>october</option>
+					<option>november</option>
+					<option>december</option>
+					</select>
+					
+				</td>
+
+					<td>
+					<select>
+						<option>Year</option>
+					<option>1995-2005</option>
+					<option>2005-2010</option>
+					<option>2010-2015</option>
+					
+					
+					</select>
+					
+				</td>
+				</tr>
+					
+
+				
+
+
+
+			  </tr>
 
 				<tr>
 					<td align="right">Gender</td>
@@ -164,7 +281,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				<tr>
 					<td align="right">What did you think <br> about us? </td>
 					<td>:
-						<input type="checkbox" > A friend or collegue <br> 
+						<input type="checkbox" > A friend or colleague <br> 
 						<input type="checkbox" >  Google <br> 
 						<input type="checkbox" >  Blog Post <br> 
 						<input type="checkbox" >  News Article
