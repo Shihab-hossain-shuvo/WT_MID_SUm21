@@ -28,6 +28,15 @@
 	$email="";
 	$err_email="";
 
+	$City="";
+	$err_City="";
+
+	$Baccount="";
+	$err_Baccount="";
+
+	$Bloodgrp="";
+	$err_Bloodgrp="";
+
 
 
 	$hasError=false;
@@ -160,15 +169,55 @@ if(!strpos($_POST["email"],"@"))
 				}
 
 
+if(!isset($_POST["City"]))
+			{   $hasError=true;
+				$err_City="Please select a city";
+			}
+			else
+			{
+				$City=$_POST["City"];
+			}
+
+            if (empty($_POST["Baccount"])) {
+
+            	$hasError=true;
+            	$err_Baccount="Account Number needed";
+            	
+            }
+			elseif (strlen($_POST["Baccount"])<10)
+
+			{   $hasError=true;
+				$err_username="Account number should contain atleast 10 numbers";
+			}
+			elseif(strpos($_POST["Baccount"]," "))
+			{    $hasError=true;
+				$err_username="Account number can not have any space";
+			}
+			else
+			{
+				$Baccount=$_POST["Baccount"];
+			}
+
+
+			if(!isset($_POST["Bloodgrp"]))
+			{   $hasError=true;
+				$err_Bloodgrp="Please select your Blood_Group";
+			}
+			else
+			{
+				$Bloodgrp=$_POST["Bloodgrp"];
+			}
+
+
+
 
 echo "Username: ".htmlspecialchars($_POST["username"])."<br>";
 echo "Password: ".htmlspecialchars($_POST["password"])."<br>";
 echo "Cpassword: ".htmlspecialchars($_POST["Cpassword"])."<br>";
 echo "Phone: ".htmlspecialchars($_POST["Phone"])."<br>";
-//echo "day: ".htmlspecialchars($_POST["day"])."<br>"; 
-//echo "month: ".htmlspecialchars($_POST["month"])."<br>";
-//echo "year: ".htmlspecialchars($_POST["year"])."<br>";
 echo "email: ".htmlspecialchars($_POST["email"])."<br>";
+echo "Baccount: ".htmlspecialchars($_POST["Baccount"])."<br>";
+
 
 
 }
@@ -266,14 +315,64 @@ echo "email: ".htmlspecialchars($_POST["email"])."<br>";
 					<td></td>
 					<td><input type="text" name="email" placeholder = "Enter your official email" value="<?php echo $email;?>"> </td><td><span><?php echo $err_email;?></span></td>
                 </tr>
+
+                <tr>
+                <td>
+                	<span>Choose City</span>
+                </td>
+
+                <td>
+                <select name="City">
+					<option disabled selected>City</option>
+					<?php
+						$city= array("Dhaka","Chittagong","Khulna","Rajshahi");
+						for($k=0;$k<count($city);$k++)
+						{
+							echo "<option>$city[$k]</option>";
+						}
+					?>
+
+				</select>
+			    </td>
+			    <td><span> <?php echo $err_City;?> </span></td>
+			    </tr>
  					
-				<tr>
+ 				<tr>
+					<td><span >BankaccountNo:</span></td>
+					<td></td>
+					<td><input type="text" name="Baccount" value="<?php echo $Baccount;?>"> </td><td><span><?php echo $err_Baccount;?></span></td>
+				</tr>
+
+
+
+				
+                 <tr>
+                <td>
+                	<span>Blood_group</span>
+                </td>
+
+                <td>
+                <select name="Bloodgrp">
+					<option disabled selected>Bloodgrp</option>
+					<?php
+						$Bloodgrp= array("A+","A-","B+","B-","o+","o-");
+						for($m=0;$m<count($Bloodgrp);$m++)
+						{
+							echo "<option>$Bloodgrp[$Bloodgrp]</option>";
+						}
+					?>
+
+				</select>
+			    </td>
+			    <td><span> <?php echo $err_Bloodgrp;?> </span></td>
+			    </tr>
+
+			    <tr>
 				<td colspan="3" align="center">
 				<input type="Submit" name="submit" value="Register">
 
 				</td>
 				</tr>
-
 
 
 				</table>

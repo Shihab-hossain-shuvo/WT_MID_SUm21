@@ -60,7 +60,9 @@ echo "Password: ".htmlspecialchars($_POST["password"])."<br>";
 	?>
 
 	<html>
-	<head></head>
+	<head>
+		
+	</head>
 	<body>
 		<center>
 		<form action="" method="post">
@@ -81,8 +83,11 @@ echo "Password: ".htmlspecialchars($_POST["password"])."<br>";
 
                <tr>
 				<td colspan="3" align="center">
-				<input type="Submit" name="submit" value="register">
+				<input type="Submit" name="submit" value="Log_in">
 				</td>
+				</tr>
+				<tr>
+					<td><a target="_blank" href="C:\xampp\htdocs\mid_sum21\project forms\Admin_login.php"><b>Admin Login</b></a></td>
 				</tr>
 
 				</table>
