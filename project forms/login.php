@@ -5,12 +5,6 @@
 	
 	$password="";
 	$err_password="";
-
-    $email="";
-	$err_email="";
-
-
-
 	$hasError=false;
 	
 if	($_SERVER["REQUEST_METHOD"]=="POST")
@@ -57,22 +51,8 @@ if(empty($_POST["password"]))
 			{
 				$password=$_POST["password"];
 			}
-
-if ((!strpos($_POST["email"],"@"))||(!strpos($_POST["password"],".")))
-				{
-					
-				$hasError=true;
-				$err_email="your email is not in correct format!";
-				}
-
-				else
-				{
-					$email=$_POST["email"];
-				}
-
 echo "Username: ".htmlspecialchars($_POST["username"])."<br>";
 echo "Password: ".htmlspecialchars($_POST["password"])."<br>";
-echo "email: ".htmlspecialchars($_POST["email"])."<br>";
 
 }
 
@@ -85,7 +65,7 @@ echo "email: ".htmlspecialchars($_POST["email"])."<br>";
 		<center>
 		<form action="" method="post">
 		<fieldset>
-		<legend align="center"><h1 style="background-color:DodgerBlue;"><b> Admin Log in Pannel</b></h1></legend>
+		<legend align="center"><h1 style="background-color:DodgerBlue;"><b>Log in Pannel</b></h1></legend>
 			<table>
 				
 				<tr>
@@ -99,17 +79,9 @@ echo "email: ".htmlspecialchars($_POST["email"])."<br>";
 					<td><input type="password" name="password" value="<?php echo $password;?>"> </td><td><span><?php echo $err_password;?></span></td>
 				</tr>
 
-               
-
-				<tr>
-					<td><span>Email:</span></td>
-					<td></td>
-					<td><input type="text" name="email" placeholder = "Enter your official email" value="<?php echo $email;?>"> </td><td><span><?php echo $err_email;?></span></td>
-				</tr>
-
-				<tr>
+               <tr>
 				<td colspan="3" align="center">
-				<input type="Submit" name="submit" value="login">
+				<input type="Submit" name="submit" value="register">
 				</td>
 				</tr>
 
