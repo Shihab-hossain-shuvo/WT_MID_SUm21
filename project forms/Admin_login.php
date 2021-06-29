@@ -39,7 +39,7 @@ if(empty($_POST["password"]))
 			elseif (strlen($_POST["password"])<8)
 			{
 				$hasError=true;
-				$err_password="Password must contain at least 8 characters";
+				$err_password="Password should contain at least 8 characters";
 			}
 
 			elseif ((!strpos($_POST["password"],"#"))||(!strpos($_POST["password"],"?")))
@@ -58,9 +58,9 @@ if(empty($_POST["password"]))
 				$password=$_POST["password"];
 			}
 
-if ((!strpos($_POST["email"],"@"))||(!strpos($_POST["password"],".")))
-				{
-					
+	if(!strpos($_POST["email"],"@"))
+			{if(!strpos($_POST["email"],"."))
+
 				$hasError=true;
 				$err_email="your email is not in correct format!";
 				}
@@ -108,7 +108,7 @@ echo "email: ".htmlspecialchars($_POST["email"])."<br>";
 				</tr>
 
 				<tr>
-				<td colspan="3" align="center">
+				<td colspan="4" align="center">
 				<input type="Submit" name="submit" value="login">
 				</td>
 				</tr>
