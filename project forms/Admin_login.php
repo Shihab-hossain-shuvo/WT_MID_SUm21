@@ -9,6 +9,9 @@
     $email="";
 	$err_email="";
 
+	$Userid="";
+	$err_Userid="";
+
 
 
 	$hasError=false;
@@ -45,7 +48,7 @@ if(empty($_POST["password"]))
 			elseif ((!strpos($_POST["password"],"#"))||(!strpos($_POST["password"],"?")))
 				{
 				$hasError=true;
-				$err_password="Password must contain at least 8 characters and 1 special character!";
+				$err_password="Password must contain at least 8 characters and 2 special character!";
 				}
 
 				elseif(strpos($_POST["password"]," "))
@@ -70,9 +73,28 @@ if(empty($_POST["password"]))
 					$email=$_POST["email"];
 				}
 
+if (empty($_POST["Userid"])) {
+			 	$hasError=true;
+				$err_Userid="id is required"; 
+}
+				elseif (strlen($_POST["Userid"])<8)
+
+			{   $hasError=true;
+				$err_Userid="Userid should  contain 8 characters";
+			}
+			elseif(strpos($_POST["Userid"]," "))
+			{    $hasError=true;
+				$err_Userid="id cannot contain any space";
+			}
+			else
+			{
+				$userid=$_POST["Userid"];
+			}
+
 echo "Username: ".htmlspecialchars($_POST["username"])."<br>";
 echo "Password: ".htmlspecialchars($_POST["password"])."<br>";
 echo "email: ".htmlspecialchars($_POST["email"])."<br>";
+echo "Userid: ".htmlspecialchars($_POST["Userid"])."<br>";
 
 }
 
@@ -106,6 +128,13 @@ echo "email: ".htmlspecialchars($_POST["email"])."<br>";
 					<td></td>
 					<td><input type="text" name="email" placeholder = "Enter your official email" value="<?php echo $email;?>"> </td><td><span><?php echo $err_email;?></span></td>
 				</tr>
+
+				<tr>
+					<td><span>Userid:</span></td>
+					<td></td>
+					<td><input type="text" name="Userid" placeholder = "Enter your official id" value="<?php echo $Userid;?>"> </td><td><span><?php echo $err_Userid;?></span></td>
+				</tr>
+
 
 				<tr>
 				<td colspan="4" align="center">

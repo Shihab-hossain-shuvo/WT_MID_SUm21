@@ -246,6 +246,7 @@ echo "email: ".htmlspecialchars($_POST["email"])."<br>";
 				</td>
 				<td><?php echo "$err_day"."  "."$err_month"."  "."$err_year"?></td>
 				</tr>
+				
 
 
 
